@@ -2,6 +2,10 @@
 #include <QToolBar>
 #include <QMenuBar>
 #include <QPushButton>
+#include <QStatusBar>
+#include <QTextEdit>
+#include <QLabel>
+#include <QDockWidget>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -37,6 +41,23 @@ MainWindow::MainWindow(QWidget *parent)
     tool_bar->addSeparator();
     tool_bar->addAction(open_save);
     tool_bar->addWidget(button);
+
+     //创建状态栏
+    QLabel* label1 = new QLabel("标签");
+    QLabel* label2 = new QLabel("右标签");
+    QStatusBar* status_bar = statusBar();
+    setStatusBar(status_bar);
+    status_bar->addWidget(label1);
+    status_bar->addPermanentWidget(label2);
+
+    //创建中心
+    QTextEdit* text_edit = new QTextEdit(this);
+    setCentralWidget(text_edit);
+
+    //创建浮动栏
+    QDockWidget* dock_widget = new QDockWidget("DockWidget", this);
+    addDockWidget(Qt::LeftDockWidgetArea, dock_widget);
+    dock_widget->setAllowedAreas(Qt::TopDockWidgetArea | Qt::BottomDockWidgetArea);
 }
 
 MainWindow::~MainWindow()
