@@ -13,6 +13,7 @@ signals:
 
 public slots:
     void eat();
+    void eat(QString food_name);
 };
 
 #endif // STUDENT_H

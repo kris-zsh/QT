@@ -12,6 +12,7 @@ public:
 signals:
 
      void Myhungry();
+     void Myhungry(QString eat_name);
 public slots:
 };
 
