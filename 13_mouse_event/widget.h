@@ -17,6 +17,7 @@ public:
     ~Widget();
 
     void timerEvent(QTimerEvent *e);
+    bool eventFilter(QObject *obj, QEvent *event);
 private:
     Ui::Widget *ui;
     int timeId_1 = 0;

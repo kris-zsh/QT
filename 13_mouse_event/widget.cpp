@@ -39,6 +39,8 @@ Widget::Widget(QWidget *parent) :
         }
         timer->start();
     });
+
+    ui->label->installEventFilter(this);
 }
 
 
@@ -56,4 +58,19 @@ void Widget::timerEvent(QTimerEvent *e)
         ui->label_2->setText(QString::number(num++));
     else
         ui->label_3->setText(QString::number(num));
+}
+
+bool Widget::eventFilter(QObject *obj, QEvent *event)
+{
+    if(obj == ui->label && event->type() == QEvent::MouseMove){
+        QMouseEvent* ev = dynamic_cast<QMouseEvent*>(event);
+        QString context = QString("eventFilter move x = %1, y = %2, gx = %3, gy = %4").
+                arg(ev->x()).
+                arg(ev->y()).
+                arg(ev->globalX()).
+                arg(ev->globalY());
+        qDebug() << context;
+        return true;
+    }
+    return QWidget::eventFilter(obj,event);
 }

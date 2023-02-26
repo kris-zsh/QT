@@ -54,4 +54,5 @@ bool MyLabel::event(QEvent *e)
         qDebug() << context;
         return true;
     }
+    return QLabel::event(e);
 }
