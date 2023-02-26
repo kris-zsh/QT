@@ -10,6 +10,12 @@ class MyLabel : public QLabel
 public:
     explicit MyLabel(QWidget *parent = 0);
 
+    void mouseMoveEvent(QMouseEvent *ev)override;
+    void mousePressEvent(QMouseEvent *ev)override;
+    void mouseReleaseEvent(QMouseEvent *ev)override;
+
+    bool event(QEvent *e) override;
+
 signals:
 
 public slots:
