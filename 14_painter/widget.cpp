@@ -5,19 +5,30 @@
 #include <QBrush>
 #include <QPoint>
 #include <QTimer>
+#include <QPixmap>
+#include <QImage>
+
 Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
 {
     ui->setupUi(this);
-    QTimer* timer = new QTimer(this);
-    timer->setInterval(500);
+//    QTimer* timer = new QTimer(this);
+//    timer->setInterval(500);
 
-    connect(timer, &QTimer::timeout,[=]{
-       posX += 20;
-       this->update();
-    });
-    timer->start();
+//    connect(timer, &QTimer::timeout,[=]{
+//       posX += 20;
+//       this->update();
+//    });
+//    timer->start();
+
+
+//    QPixmap map(100,100);
+//    QPainter painter(&map);
+//    map.fill(Qt::cyan);
+//    painter.drawEllipse(QPoint(100,100),50,50);
+//    map.save(R"(D:\BaiduNetdiskDownload\Qt-学习\QT资料\day3资料\Code\04_QtPaintDevice\Image\1.png)");
+
 }
 
 Widget::~Widget()
@@ -57,10 +68,10 @@ void Widget::paintEvent(QPaintEvent *event)
 //    painter.drawRect(100,200,100,100);
 
 
-    ///////////手动绘图
-    ///
-    QPainter painter(this);
-    if(posX >= this->width())
-        posX = 0;
-    painter.drawPixmap(posX,0, QPixmap(":image/Sunny.jpg"));
+//    ///////////手动绘图
+//    ///
+//    QPainter painter(this);
+//    if(posX >= this->width())
+//        posX = 0;
+//    painter.drawImage(50,50);
 }
