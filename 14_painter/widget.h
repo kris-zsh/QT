@@ -16,6 +16,7 @@ public:
     ~Widget();
     void paintEvent(QPaintEvent *event);
 private:
+    int posX = 0;
     Ui::Widget *ui;
 };
 
