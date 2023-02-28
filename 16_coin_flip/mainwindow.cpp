@@ -3,6 +3,7 @@
 #include <QPainter>
 #include <QDebug>
 #include <QPixmap>
+#include <MyPushButton.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -16,6 +17,18 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setFixedSize(390,570);
     this->setWindowIcon(QIcon(":/picture/res/Coin0001.png"));
     this->setWindowTitle("IconFlip");
+
+    MyPushButton* my_push_button = new MyPushButton(":/picture/res/MenuSceneStartButton.png");
+    my_push_button->setParent(this);
+
+    my_push_button->move((this->width() - my_push_button->width()) * 0.5, this->height() * 0.7);
+
+    connect(my_push_button, &MyPushButton::clicked, [=]{
+       qDebug() << "clicked";
+       my_push_button->moveDown();
+       my_push_button->moveUp();
+
+    });
 }
 
 MainWindow::~MainWindow()
