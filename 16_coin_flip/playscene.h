@@ -15,6 +15,7 @@ public:
 
 private:
     int idx_ = 0;
+    QVector< QVector<int>> cur_section_;
 signals:
     void backbutton();
 public slots:

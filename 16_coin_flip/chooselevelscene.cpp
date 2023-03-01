@@ -7,6 +7,7 @@
 #include <QDebug>
 #include <QLabel>
 
+
 ChooseLevelScene::ChooseLevelScene(QWidget *parent) : QMainWindow(parent)
 {
     QMenuBar* bar = menuBar();

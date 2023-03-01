@@ -6,7 +6,9 @@
 #include <QPixmap>
 #include <QLabel>
 #include <QFont>
-
+#include <dataconfig.h>
+#include <mycoin.h>
+#include <QString>
 PlayScene1::PlayScene1(QWidget *parent) : QMainWindow(parent)
 {
 
@@ -49,6 +51,8 @@ PlayScene1::PlayScene1(int idx)
     label->setText(QString("Level: %1").arg(QString::number(idx_)));
     label->setGeometry(QRect(30, this->height() - 50,120, 50));
 
+    dataConfig data;
+    cur_section_ = data.mData[idx_];
 
     for(int i = 0; i < 4; i++){
         for(int j = 0; j < 4; j++){
@@ -61,8 +65,15 @@ PlayScene1::PlayScene1(int idx)
             label->setPixmap(map);
 
             label->move(87 + i*50,200+j*50);
+
+            QString image = cur_section_[i][j] == 1 ? ":/picture/res/Coin0001.png" : ":/picture/res/Coin0008.png";
+            MyCoin* coin = new MyCoin(image);
+            coin->move(90 + i*48,202+j*48);
+            coin->setParent(this);
+
         }
     }
+
 
 }
 
