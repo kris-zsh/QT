@@ -13,7 +13,7 @@ public:
 protected:
     void paintEvent(QPaintEvent *);
 private:
-    PlayScene* play_scene = nullptr;
+    PlayScene1 *play_scene = nullptr;
 signals:
     void backbutton();
 public slots:

@@ -33,6 +33,8 @@ ChooseLevelScene::ChooseLevelScene(QWidget *parent) : QMainWindow(parent)
         emit this->backbutton();
     });
 
+
+
     for(int i = 0; i < 20; i++){
 
         MyPushButton* icon_button = new MyPushButton(":/picture/res/LevelIcon.png");
@@ -52,21 +54,21 @@ ChooseLevelScene::ChooseLevelScene(QWidget *parent) : QMainWindow(parent)
            QString str = QString("选择了第%1关卡").arg(QString::number(i+1));
             qDebug() << str;
 
-            play_scene = new PlayScene(i + 1);
+            play_scene = new PlayScene1(i + 1);
 
             this->hide();
-            play_scene.show();
+            play_scene->show();
 
-        });
+            //在关卡界面 如果点击back则直接将窗口删除 显示原窗口
+            connect(play_scene,&PlayScene1::backbutton, [=]{
+                qDebug() << "收到back";
+                if(play_scene == nullptr){
+                    delete play_scene;
+                    play_scene = nullptr;
+                }
+                this->show();
+            });
 
-        //在关卡界面 如果点击back则直接将窗口删除 显示原窗口
-        connect(play_scene,&PlayScene::backbutton, [=]{
-
-            if(play_scene == nullptr){
-                delete play_scene;
-                play_scene = nullptr;
-            }
-            this->show();
         });
     }
 }

@@ -1,4 +1,4 @@
-#include "playscene.h"
+#include "PlayScene.h"
 #include <QMenuBar>
 #include <mypushbutton.h>
 #include <QDebug>
@@ -7,12 +7,12 @@
 #include <QLabel>
 #include <QFont>
 
-PlayScene::PlayScene(QWidget *parent) : QMainWindow(parent)
+PlayScene1::PlayScene1(QWidget *parent) : QMainWindow(parent)
 {
 
 }
 
-PlayScene::PlayScene(int idx)
+PlayScene1::PlayScene1(int idx)
 {
     idx_=  idx;
 
@@ -27,7 +27,7 @@ PlayScene::PlayScene(int idx)
     });
 
     this->setWindowIcon(QIcon(":/picture/res/Coin0001.png"));
-    this->setWindowTitle(QString("第%1").arg(QString::number(level_index)));
+    this->setWindowTitle(QString("第%1关").arg(QString::number(idx_)));
     this->setFixedSize(390,570);
 
     MyPushButton* button = new MyPushButton(":/picture/res/BackButton.png", ":/picture/res/BackButtonSelected.png");
@@ -41,10 +41,10 @@ PlayScene::PlayScene(int idx)
     });
 
     QLabel* label = new QLabel(this);
+    QFont font;
 
-    QFont* font = new QFont;
-    font->setFamily("华文新魏");
-    font->setPointSize(20);
+    font.setFamily("华文新魏");
+    font.setPointSize(10);
     label->setFont(font);
     label->setText(QString("Level: %1").arg(QString::number(idx_)));
     label->setGeometry(QRect(30, this->height() - 50,120, 50));
@@ -60,13 +60,13 @@ PlayScene::PlayScene(int idx)
 
             label->setPixmap(map);
 
-            label->move(57 + i*50,200+j*50);
+            label->move(87 + i*50,200+j*50);
         }
     }
 
 }
 
-void PlayScene::paintEvent(QPaintEvent *)
+void PlayScene1::paintEvent(QPaintEvent *)
 {
     QPixmap map(":/picture/res/PlayLevelSceneBg.png");
     QPainter painter(this);
