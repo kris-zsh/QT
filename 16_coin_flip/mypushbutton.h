@@ -13,6 +13,9 @@ public:
 
     void moveDown();
     void moveUp();
+protected:
+    void mousePressEvent(QMouseEvent *e);
+    void mouseReleaseEvent(QMouseEvent *e);
 private:
     QString normaled_;
     QString pressed_;

@@ -4,12 +4,14 @@
 #include <QDebug>
 #include <QPixmap>
 #include <MyPushButton.h>
+#include <QTimer>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
     connect(ui->actionQuit, &QAction::triggered, [this]{
        this->close();
     });
@@ -17,6 +19,8 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setFixedSize(390,570);
     this->setWindowIcon(QIcon(":/picture/res/Coin0001.png"));
     this->setWindowTitle("IconFlip");
+
+    choose_level_scene = new ChooseLevelScene;
 
     MyPushButton* my_push_button = new MyPushButton(":/picture/res/MenuSceneStartButton.png");
     my_push_button->setParent(this);
@@ -28,7 +32,17 @@ MainWindow::MainWindow(QWidget *parent) :
        my_push_button->moveDown();
        my_push_button->moveUp();
 
+       QTimer::singleShot(400,[=]{
+        this->hide();
+        choose_level_scene->show();
+       });
     });
+
+    connect(choose_level_scene,&ChooseLevelScene::backbutton, [=]{
+        choose_level_scene->hide();
+        this->show();
+    });
+
 }
 
 MainWindow::~MainWindow()

@@ -20,7 +20,7 @@
      <x>0</x>
      <y>0</y>
      <width>400</width>
-     <height>21</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -31,16 +31,6 @@
    </widget>
    <addaction name="menu"/>
   </widget>
-  <action name="actionTuich">
-   <property name="text">
-    <string>quit</string>
-   </property>
-  </action>
-  <action name="actionQuti">
-   <property name="text">
-    <string>quti</string>
-   </property>
-  </action>
   <action name="actionQuit">
    <property name="text">
     <string>退出</string>
