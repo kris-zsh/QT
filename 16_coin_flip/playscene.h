@@ -8,13 +8,13 @@ class PlayScene : public QMainWindow
     Q_OBJECT
 public:
     explicit PlayScene(QWidget *parent = 0);
-    explicit PlayScene(int level_index);
-
+    explicit PlayScene(int idx);
     void paintEvent(QPaintEvent *);
-private:
-    int level_index_;
-signals:
 
+private:
+    int idx_;
+signals:
+    void backbutton();
 public slots:
 };
 

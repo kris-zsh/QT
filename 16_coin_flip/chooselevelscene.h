@@ -2,7 +2,9 @@
 #define PLAYSCENE_H
 
 #include <QMainWindow>
-#include <playscene.h>
+#include "playscene.h"
+
+
 class ChooseLevelScene : public QMainWindow
 {
     Q_OBJECT
@@ -11,7 +13,7 @@ public:
 protected:
     void paintEvent(QPaintEvent *);
 private:
-    PlayScene* play_scene;
+    PlayScene* play_scene = nullptr;
 signals:
     void backbutton();
 public slots:
