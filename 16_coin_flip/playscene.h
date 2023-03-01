@@ -2,6 +2,8 @@
 #define PLAYSCENE_H
 
 #include <QMainWindow>
+#include "dataconfig.h"
+#include <QVector>
 
 class PlayScene : public QMainWindow
 {
@@ -12,7 +14,7 @@ public:
     void paintEvent(QPaintEvent *);
 
 private:
-    int idx_;
+
 signals:
     void backbutton();
 public slots:

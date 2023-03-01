@@ -48,6 +48,22 @@ PlayScene::PlayScene(int idx)
     label->setFont(font);
     label->setText(QString("Level: %1").arg(QString::number(idx_)));
     label->setGeometry(QRect(30, this->height() - 50,120, 50));
+
+
+    for(int i = 0; i < 4; i++){
+        for(int j = 0; j < 4; j++){
+
+            QLabel* label = new QLabel(this);
+            QPixmap map(":/picture/res/BoardNode(1).png");
+
+            label->setFixedSize(map.width(), map.height());
+
+            label->setPixmap(map);
+
+            label->move(57 + i*50,200+j*50);
+        }
+    }
+
 }
 
 void PlayScene::paintEvent(QPaintEvent *)
