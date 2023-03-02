@@ -4,6 +4,9 @@
 #include <QMainWindow>
 #include "dataconfig.h"
 #include <QVector>
+#include <mycoin.h>
+#include <QPropertyAnimation>
+#include <QLabel>
 
 class PlayScene1 : public QMainWindow
 {
@@ -14,8 +17,11 @@ public:
     void paintEvent(QPaintEvent *);
 
 private:
-    int idx_ = 0;
-    QVector< QVector<int>> cur_section_;
+    int idx_;
+    QVector<QVector<MyCoin*>> coin_arr;
+    QLabel* success;
+    QPixmap map_suceess;
+    void MoveDown();
 signals:
     void backbutton();
 public slots:

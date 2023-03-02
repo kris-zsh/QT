@@ -7,7 +7,6 @@
 #include <QDebug>
 #include <QLabel>
 
-
 ChooseLevelScene::ChooseLevelScene(QWidget *parent) : QMainWindow(parent)
 {
     QMenuBar* bar = menuBar();
@@ -63,7 +62,7 @@ ChooseLevelScene::ChooseLevelScene(QWidget *parent) : QMainWindow(parent)
             //在关卡界面 如果点击back则直接将窗口删除 显示原窗口
             connect(play_scene,&PlayScene1::backbutton, [=]{
                 qDebug() << "收到back";
-                if(play_scene == nullptr){
+                if(play_scene != nullptr){
                     delete play_scene;
                     play_scene = nullptr;
                 }

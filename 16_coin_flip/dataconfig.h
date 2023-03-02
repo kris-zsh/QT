@@ -13,7 +13,7 @@ public:
 
 public:
 
-    QMap<int, QVector< QVector<int> > >mData;
+    static QMap<int, QVector< QVector<int> > >mData;
 
 
 

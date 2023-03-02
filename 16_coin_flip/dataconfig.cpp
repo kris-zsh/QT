@@ -1,5 +1,8 @@
 #include "dataconfig.h"
 #include <QDebug>
+
+QMap<int, QVector< QVector<int> > > dataConfig::mData;
+
 dataConfig::dataConfig(QObject *parent) : QObject(parent)
 {
 
