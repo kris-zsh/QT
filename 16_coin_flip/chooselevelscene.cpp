@@ -6,6 +6,7 @@
 #include "mypushbutton.h"
 #include <QDebug>
 #include <QLabel>
+#include <QSound>
 
 ChooseLevelScene::ChooseLevelScene(QWidget *parent) : QMainWindow(parent)
 {
@@ -55,13 +56,14 @@ ChooseLevelScene::ChooseLevelScene(QWidget *parent) : QMainWindow(parent)
             qDebug() << str;
 
             play_scene = new PlayScene1(i + 1);
-
+            play_scene->setGeometry(this->geometry());
             this->hide();
             play_scene->show();
 
             //在关卡界面 如果点击back则直接将窗口删除 显示原窗口
             connect(play_scene,&PlayScene1::backbutton, [=]{
                 qDebug() << "收到back";
+                this->setGeometry(play_scene->geometry());
                 if(play_scene != nullptr){
                     delete play_scene;
                     play_scene = nullptr;

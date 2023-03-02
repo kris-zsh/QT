@@ -5,6 +5,7 @@
 #include <QPixmap>
 #include <MyPushButton.h>
 #include <QTimer>
+#include <QSound>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -21,6 +22,9 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setWindowTitle("IconFlip");
 
     choose_level_scene = new ChooseLevelScene;
+    QSound* sound = new QSound(":/picture/res/ConFlipSound.wav",this);\
+    sound->setLoops(-1);
+    sound->play();
 
     MyPushButton* my_push_button = new MyPushButton(":/picture/res/MenuSceneStartButton.png");
     my_push_button->setParent(this);
@@ -33,14 +37,17 @@ MainWindow::MainWindow(QWidget *parent) :
        my_push_button->moveUp();
 
        QTimer::singleShot(400,[=]{
+        choose_level_scene->setGeometry(this->geometry());
         this->hide();
         choose_level_scene->show();
        });
     });
 
     connect(choose_level_scene,&ChooseLevelScene::backbutton, [=]{
+        this->setGeometry(choose_level_scene->geometry());
         choose_level_scene->hide();
         this->show();
+
     });
 
 }
